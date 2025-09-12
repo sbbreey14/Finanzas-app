@@ -1,24 +1,27 @@
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { FaMoneyBillAlt } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
+import { MdOutlineTripOrigin } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 
 const navItems = [
-    { title: 'Dashboard', icons: <MdOutlineSpaceDashboard />},
-    { title: 'Finanzas', icons: <FaMoneyBillAlt />},
-    { title: 'Perfil', icons: <CgProfile />},
+    { title: 'Main', navigate: '/',icons: <MdOutlineTripOrigin />},
+    { title: 'Dashboard', navigate: '/dashboard',icons: <MdOutlineSpaceDashboard />},
+    { title: 'Finanzas', navigate: '/finanzas',icons: <FaMoneyBillAlt />},
+    { title: 'Perfil', navigate: '/perfil',icons: <CgProfile />},
 ]
 
 export const NavBar = () => {
 
   return (
-    <div className="relative mt-2 flex h-[calc(130vh-20rem)] w-full max-w-[20rem] flex-col rounded-xl bg-white bg-clip-border p-4 text-gray-700 shadow-xl shadow-blue-gray-900/5">
+    <div className="relative flex h-full w-full max-w-[20rem] flex-col rounded-xl bg-white bg-clip-border p-4 text-gray-800 shadow-xl shadow-blue-gray-900/5">
       <div className="p-4 mb-2">
-        <h5 className="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+        <h5 className="block font-sans text-4xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
           Dashboard
         </h5>
       </div>
-      <nav className="flex min-w-[240px] flex-col gap-1 p-2 font-sans text-base font-normal text-blue-gray-700">
+      <nav className="flex min-w-[240px] flex-col gap-1 p-2 font-sans text-2xl font-normal text-blue-gray-700">
         {
             navItems.map( nav => (
                 <div
@@ -29,7 +32,9 @@ export const NavBar = () => {
                 <div className="grid mr-4 place-items-center">
                     { nav.icons }
                 </div>
-                { nav.title }
+                <Link to={nav.navigate}>
+                  { nav.title }
+                </Link>
                 </div>
             ))
         }
