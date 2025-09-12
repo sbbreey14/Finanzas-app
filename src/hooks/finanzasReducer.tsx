@@ -12,7 +12,7 @@ type State = { finanzas: StateProps[] }
 type ActionProps =
   | { type: "ADD_FINANZAS"; payload: StateProps }
   | { type: "DELETE_FINANZAS"; payload: string }
-  | { type: "EDIT_FINANZAS"; payload: { id: string } & Partial<Omit<StateProps, 'id'>> }
+  | { type: "EDIT_FINANZAS"; payload: { id: string, nombreServicio: string, monto: number, fecha: string, categoria: string } }
 
 export const initialState: State = {
     finanzas: []
@@ -35,13 +35,15 @@ export const FinanzasReducer = ( state:State, action:ActionProps ):State => {
             return {
                 ...state,
                 finanzas: state.finanzas.map( finanza => finanza.id === action.payload.id ? 
-                    { ...finanza, ...action.payload } 
+                    { ...finanza, nombreServicio: action.payload.nombreServicio,
+                        monto: action.payload.monto,
+                        fecha: action.payload.fecha,
+                        categoria: action.payload.categoria
+                     } 
                     : finanza 
                 )
             }
         default:
             return state;
-    }
-
-    
+    }    
 }
