@@ -1,1 +1,113 @@
 @import "tailwindcss";
+
+/* Estilos base responsivos */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Utilidades para truncar texto */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
+/* Asegurar que las imágenes sean responsivas por defecto */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevenir overflow horizontal en dispositivos móviles */
+body, html {
+  overflow-x: hidden;
+}
+
+/* Mejoras para elementos de formulario en móviles */
+@media (max-width: 640px) {
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 1;
+    display: block;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%23bbbbbb" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>') no-repeat;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+  }
+  
+  /* Mejorar el tap target size en móviles */
+  button, a, input, select, textarea {
+    min-height: 44px;
+  }
+}
+
+/* Animaciones suaves para cambios de estado */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Mejoras de accesibilidad para focus */
+*:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Scrollbar personalizada para mejor UX */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
